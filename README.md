@@ -53,6 +53,37 @@ There are three types of traversal:
 > 
 > If a binary tree is traversed **in-order**, the output will produce sorted key values in an **ascending order**.
 
+```python
+class Node():
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+    
+
+def inOrder(root):
+    if root is None:
+        return []
+    result = []
+    result.extend(inOrder(root.left))
+    result.append(root.data)
+    result.extend(inOrder(root.right))
+    return result
+
+
+root = Node(3)
+root.left = Node(6)
+root.right = Node(4)
+root.left.left = Node(5)
+root.left.right = Node(2)
+root.right.left= Node(9)
+root.right.right= Node(8)
+res = inOrder(root)
+print(res)
+
+# output : [5, 6, 2, 3, 9, 4, 8]
+
+```
 </br>
 
 ## **Preorder traversal**
@@ -65,6 +96,38 @@ There are three types of traversal:
 >```
 >Time Complexity: O(N)
 
+```python
+class Node():
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+    
+
+def preOrder(root):
+    if root is None:
+        return []
+    result = []
+    result.append(root.data)
+    result.extend(preOrder(root.left))
+    result.extend(preOrder(root.right))
+    return result
+
+
+root = Node(3)
+root.left = Node(6)
+root.right = Node(4)
+root.left.left = Node(5)
+root.left.right = Node(2)
+root.right.left= Node(9)
+root.right.right= Node(8)
+res = preOrder(root)
+print(res)
+
+# output : [3, 6, 5, 2, 4, 9, 8]
+
+```
+
 </br>
 
 ## **Postorder Traversal**
@@ -76,3 +139,34 @@ There are three types of traversal:
 >Visit the root
 >```
 >Time Complexity: O(N)
+
+```python
+class Node():
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+    
+
+def postOrder(root):
+    if root is None:
+        return []
+    result = []
+    result.extend(postOrder(root.left))
+    result.extend(postOrder(root.right))
+    result.append(root.data)
+    return result
+
+
+root = Node(3)
+root.left = Node(6)
+root.right = Node(4)
+root.left.left = Node(5)
+root.left.right = Node(2)
+root.right.left= Node(9)
+root.right.right= Node(8)
+res = postOrder(root)
+print(res)
+
+# output : [5, 2, 6, 9, 8, 4, 3]
+```

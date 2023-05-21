@@ -5,13 +5,13 @@ class Node():
         self.data = data
     
 
-def inOrder(root):
+def postOrder(root):
     if root is None:
         return []
     result = []
-    result.extend(inOrder(root.left))
+    result.extend(postOrder(root.left))
+    result.extend(postOrder(root.right))
     result.append(root.data)
-    result.extend(inOrder(root.right))
     return result
 
 
@@ -22,6 +22,5 @@ root.left.left = Node(5)
 root.left.right = Node(2)
 root.right.left= Node(9)
 root.right.right= Node(8)
-res = inOrder(root)
+res = postOrder(root)
 print(res)
-
